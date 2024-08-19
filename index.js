@@ -3,21 +3,24 @@ $(document).ready(function() {
     var btn_open = $("#open");
     var btn_reset = $("#reset");
 
+    // Handle clicks on the envelope, open, and reset buttons
     envelope.click(function() {
-        open();
-    });
-    btn_open.click(function() {
-        open();
-    });
-    btn_reset.click(function() {
-        close();
+        openEnvelope();
     });
 
-    function open() {
+    btn_open.click(function() {
+        openEnvelope();
+    });
+
+    btn_reset.click(function() {
+        closeEnvelope();
+    });
+
+    function openEnvelope() {
         envelope.addClass("open").removeClass("close");
     }
 
-    function close() {
+    function closeEnvelope() {
         envelope.addClass("close").removeClass("open");
     }
 });
