@@ -144,7 +144,7 @@ body {
 .heart:before, .heart:after {
     position: absolute;
     content: "";
-    background: #d00000;
+    background: #83caf3;
     width: 50px;
     height: 80px;
     left: 50px;
@@ -189,23 +189,7 @@ body {
     animation-fill-mode: forwards;
     animation-delay: 0.7s;
 }
-.a4 {
-    left: 40%;
-    transform: scale(0.7);
-    opacity: 1;
-    animation: slideUp 6s linear 1, sideSway 3s ease-in-out 3 alternate;
-    animation-fill-mode: forwards;
-    animation-delay: 0.5s;
-}
 
-.a5 {
-    left: 75%;
-    transform: scale(0.5);
-    opacity: 1;
-    animation: slideUp 8s linear 1, sideSway 4s ease-in-out 5 alternate;
-    animation-fill-mode: forwards;
-    animation-delay: 0.5s;
-}
 
 @keyframes slideUp {
     0% {
@@ -224,24 +208,6 @@ body {
         margin-left: 50px;
     }
 }
-@keyframes slideUp {
-    0% {
-        top: 0;
-    }
-    100% {
-        top: -700px; /* Extend if you add more hearts */
-    }
-}
-
-@keyframes sideSway {
-    0% {
-        margin-left: 0px;
-    }
-    100% {
-        margin-left: 70px; /* Adjust based on heart size and effect */
-    }
-}
-
 
 .reset {
     text-align: center;
