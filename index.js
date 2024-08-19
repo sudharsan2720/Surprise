@@ -1,4 +1,3 @@
-
 $(document).ready(function() {
     var envelope = $("#envelope");
     var btn_open = $("#open");
@@ -15,13 +14,10 @@ $(document).ready(function() {
     });
 
     function open() {
-        envelope.addClass("open")
-            .removeClass("close");
+        envelope.addClass("open").removeClass("close");
     }
 
     function close() {
-        envelope.addClass("close")
-            .removeClass("open");
+        envelope.addClass("close").removeClass("open");
     }
-
-})
+});
