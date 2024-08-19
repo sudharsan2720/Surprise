@@ -1,8 +1,20 @@
+/* General Styles */
+body {
+    background: url('https://cdn.pixabay.com/photo/2017/01/07/00/05/paper-1959384_1280.jpg') no-repeat center center fixed;
+    font-family: 'Josefin Slab', serif;
+    color: #333;
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+}
+
 /* Envelope Styles */
 .envelope-wrapper {
-    height: 380px;
-    position: relative;
-    margin-top: 100px;
+    height: auto; /* Adjust height for better responsiveness */
+    margin-top: 50px; /* Reduced margin for mobile */
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #envelope {
@@ -11,7 +23,6 @@
     width: 280px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
-    margin: 0 auto;
     background-color: #F7B5CA;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -56,6 +67,7 @@
     margin-left: auto;
     margin-right: auto;
     z-index: 1;
+    overflow: hidden; /* Ensures content fits within the letter */
 }
 
 .words {
@@ -91,24 +103,29 @@
     left: 0;
     right: 0;
     z-index: 2;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
 }
 
 .heart {
-    position: absolute;
-    bottom: 0;
-    right: 10%;
-    width: 50px;
-    height: 50px;
+    width: 40px; /* Adjusted for mobile */
+    height: 40px; /* Adjusted for mobile */
     background-color: red;
     transform: scale(0.7);
     animation: glowing 1.5s infinite;
 }
 
-/* Glow Effect */
 @keyframes glowing {
     0% { box-shadow: 0 0 5px #ff69b4; }
     50% { box-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
     100% { box-shadow: 0 0 5px #ff69b4; }
+}
+
+/* Button Styles */
+.reset {
+    text-align: center;
+    font-style: oblique;
 }
 
 .reset button {
@@ -118,7 +135,7 @@
     border-radius: 4px;
     color: #D14D72;
     padding: 10px 20px;
-    margin: 20px;
+    margin: 10px; /* Reduced margin for mobile */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -129,7 +146,6 @@
     animation: bounce 0.5s ease;
 }
 
-/* Button Bounce Effect */
 @keyframes bounce {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
@@ -138,18 +154,73 @@
 /* Typing Effect for Message */
 .message {
     font-family: 'Caveat', cursive;
-    font-size: 24px;
+    font-size: 18px; /* Adjusted for mobile */
     text-align: center;
-    margin: 50px;
-    display: none;
+    margin: 20px;
+    display: block;
+    white-space: pre-wrap; /* Ensures text wraps properly */
+    overflow: hidden; /* Ensures no overflow */
 }
 
-@keyframes typing {
-    0% { width: 0; }
-    100% { width: 100%; }
+/* Responsive Media Queries */
+@media (max-width: 768px) {
+    #envelope {
+        width: 200px;
+        height: 130px;
+    }
+
+    .flap {
+        border-top: 70px solid #D14D72;
+        border-left: 100px solid transparent;
+        border-right: 100px solid transparent;
+        border-bottom: 50px solid transparent;
+    }
+
+    .pocket {
+        border-left: 100px solid #FF8BA0;
+        border-right: 100px solid #FF8BA0;
+        border-bottom: 60px solid #FFA8B5;
+        border-top: 60px solid transparent;
+    }
+
+    .heart {
+        width: 30px;
+        height: 30px;
+    }
+
+    .message {
+        font-size: 16px;
+        margin: 10px;
+    }
 }
 
-@keyframes blink {
-    0%, 100% { border-color: transparent; }
-    50% { border-color: black; }
+@media (max-width: 480px) {
+    #envelope {
+        width: 150px;
+        height: 100px;
+    }
+
+    .flap {
+        border-top: 50px solid #D14D72;
+        border-left: 70px solid transparent;
+        border-right: 70px solid transparent;
+        border-bottom: 40px solid transparent;
+    }
+
+    .pocket {
+        border-left: 70px solid #FF8BA0;
+        border-right: 70px solid #FF8BA0;
+        border-bottom: 40px solid #FFA8B5;
+        border-top: 40px solid transparent;
+    }
+
+    .heart {
+        width: 25px;
+        height: 25px;
+    }
+
+    .message {
+        font-size: 14px;
+        margin: 5px;
+    }
 }
