@@ -1,20 +1,9 @@
-/* General Styles */
 body {
-    background: url('https://cdn.pixabay.com/photo/2017/01/07/00/05/paper-1959384_1280.jpg') no-repeat center center fixed;
-    font-family: 'Josefin Slab', serif;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    background-size: cover;
+    background-color: #FEF2F4;
 }
 
-/* Envelope Styles */
 .envelope-wrapper {
-    height: auto; /* Adjust height for better responsiveness */
-    margin-top: 50px; /* Reduced margin for mobile */
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    height: 380px;
 }
 
 #envelope {
@@ -23,6 +12,9 @@ body {
     width: 280px;
     border-bottom-left-radius: 6px;
     border-bottom-right-radius: 6px;
+    margin-left: auto;
+    margin-right: auto;
+    top: 50%;
     background-color: #F7B5CA;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
@@ -44,7 +36,6 @@ body {
     border-right: 140px solid transparent;
     border-bottom: 82px solid transparent;
     transform-origin: top;
-    transition: transform 0.4s ease;
 }
 
 .pocket {
@@ -66,35 +57,74 @@ body {
     box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
     margin-left: auto;
     margin-right: auto;
-    z-index: 1;
-    overflow: hidden; /* Ensures content fits within the letter */
+}
+
+.letter:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
 }
 
 .words {
-    font-family: 'Satisfy', cursive;
-    font-size: 16px;
+    position: absolute;
+    left: 7%;
+    right: 7%;
+    width: 90%;
+    height: 11%;
+    font-size: 13px;
     text-align: center;
+    font-family: "Josefin Slab", serif;;
     color: black;
-    position: relative;
-    top: 20%;
+    
+}
+
+.line1 {
+    font-weight: 1000 ;
+    top: 8%;
+    text-align: left;
+}
+
+.line2 {
+    top: 25%;
+    font-weight: 500;
+    
+}
+.line3 {
+    top: 39%;
+    text-align: center;
+    font-weight: 500;
+}
+.line4 {
+    top: 58%;
+    text-align: center;
+    font-weight: 600;
 }
 
 .open .flap {
-    transform: rotateX(180deg);
-    transition: transform 0.4s ease-in-out;
-}
-
-.open .letter {
-    transform: translateY(-80px);
-    transition: transform 0.4s ease-in-out;
+    transform: rotatex(180deg);
+    transition: transform 0.4s ease, z-index 0.6s;
+    z-index: 1;
 }
 
 .close .flap {
-    transform: rotateX(0deg);
+    transform: rotatex(0deg);
+    transition: transform 0.4s 0.6s ease, z-index 1s;
+    z-index: 5;
+}
+
+.open .letter {
+    transform: translatey(-80px);
+    transition: transform 0.4s 0.6s ease, z-index 0.6s;
+    z-index: 2;
 }
 
 .close .letter {
-    transform: translateY(0);
+    transform: translatey(0deg);
+    transition: transform 0.4s ease, z-index 1s;
+    z-index: 1;
 }
 
 .hearts {
@@ -103,124 +133,122 @@ body {
     left: 0;
     right: 0;
     z-index: 2;
-    display: flex;
-    justify-content: center;
-    gap: 10px;
 }
 
 .heart {
-    width: 40px; /* Adjusted for mobile */
-    height: 40px; /* Adjusted for mobile */
-    background-color: red;
-    transform: scale(0.7);
-    animation: glowing 1.5s infinite;
+    position: absolute;
+    bottom: 0;
+    right: 10%;
 }
 
-@keyframes glowing {
-    0% { box-shadow: 0 0 5px #ff69b4; }
-    50% { box-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
-    100% { box-shadow: 0 0 5px #ff69b4; }
+.heart:before, .heart:after {
+    position: absolute;
+    content: "";
+    background: #d00000;
+    width: 50px;
+    height: 80px;
+    left: 50px;
+    top: 0;
+    border-radius: 50px 50px 0 0;
+    transform: rotate(-45deg);
+    transform-origin: 0 100%;
 }
 
-/* Button Styles */
+.heart:after {
+    left: 0;
+    transform: rotate(45deg);
+    transform-origin: 100% 100%;
+}
+
+.close .heart {
+    opacity: 0;
+    animation: none;
+}
+
+.a1 {
+    left: 20%;
+    transform: scale(0.6);
+    opacity: 1;
+    animation: slideUp 4s linear 1, sideSway 2s  ease-in-out 4 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+.a2 {
+    left: 55%;
+    transform: scale(1);
+    opacity: 1;
+    animation: slideUp 5s linear 1, sideSway 4s  ease-in-out 2 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+.a3 {
+    left: 10%;
+    transform: scale(0.8);
+    opacity: 1;
+    animation: slideUp 7s linear 1, sideSway 2s  ease-in-out 6 alternate;
+    animation-fill-mode: forwards;
+    animation-delay: 0.7s;
+}
+
+@keyframes slideUp {
+    0% {
+       top: 0;
+    }
+    100% {
+        top: -600px;
+    }
+}
+
+@keyframes sideSway {
+    0% {
+        margin-left: 0px;
+    }
+    100% {
+        margin-left: 50px;
+    }
+}
+
 .reset {
     text-align: center;
     font-style: oblique;
+    font-display: auto;
+    
 }
 
 .reset button {
     font-weight: 800;
+    font-style: normal;
+    transition: all 0.1s linear;
     background-color: transparent;
     border: solid 2px #D14D72;
     border-radius: 4px;
     color: #D14D72;
-    padding: 10px 20px;
-    margin: 10px; /* Reduced margin for mobile */
-    cursor: pointer;
-    transition: all 0.3s ease;
+    display: inline-block;
+    font-size: 14px;
+    text-transform: uppercase;
+    margin: 20px;
+    margin-top: 100px;
+    padding: 10px;
+    line-height: 2em;
+    text-decoration: none;
+    min-width: 150px;
+    outline: none;
 }
 
 .reset button:hover {
     background-color: #D14D72;
+    cursor: pointer;
     color: white;
-    animation: bounce 0.5s ease;
 }
 
-@keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-10px); }
-}
-
-/* Typing Effect for Message */
 .message {
-    font-family: 'Caveat', cursive;
-    font-size: 18px; /* Adjusted for mobile */
     text-align: center;
-    margin: 20px;
-    display: block;
-    white-space: pre-wrap; /* Ensures text wraps properly */
-    overflow: hidden; /* Ensures no overflow */
+    font-family: "Josefin Slab", serif;
+    font-weight: 400;
+    font-style: normal;
+    margin: 50px;
+    font-size: 24px;
+    line-height: 1.5;
+    color:rgb(20, 20, 20);
 }
 
-/* Responsive Media Queries */
-@media (max-width: 768px) {
-    #envelope {
-        width: 200px;
-        height: 130px;
-    }
-
-    .flap {
-        border-top: 70px solid #D14D72;
-        border-left: 100px solid transparent;
-        border-right: 100px solid transparent;
-        border-bottom: 50px solid transparent;
-    }
-
-    .pocket {
-        border-left: 100px solid #FF8BA0;
-        border-right: 100px solid #FF8BA0;
-        border-bottom: 60px solid #FFA8B5;
-        border-top: 60px solid transparent;
-    }
-
-    .heart {
-        width: 30px;
-        height: 30px;
-    }
-
-    .message {
-        font-size: 16px;
-        margin: 10px;
-    }
-}
-
-@media (max-width: 480px) {
-    #envelope {
-        width: 150px;
-        height: 100px;
-    }
-
-    .flap {
-        border-top: 50px solid #D14D72;
-        border-left: 70px solid transparent;
-        border-right: 70px solid transparent;
-        border-bottom: 40px solid transparent;
-    }
-
-    .pocket {
-        border-left: 70px solid #FF8BA0;
-        border-right: 70px solid #FF8BA0;
-        border-bottom: 40px solid #FFA8B5;
-        border-top: 40px solid transparent;
-    }
-
-    .heart {
-        width: 25px;
-        height: 25px;
-    }
-
-    .message {
-        font-size: 14px;
-        margin: 5px;
-    }
-}
