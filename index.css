@@ -1,26 +1,155 @@
-$(document).ready(function() {
-    var envelope = $("#envelope");
-    var btn_open = $("#open");
-    var btn_reset = $("#reset");
+/* Envelope Styles */
+.envelope-wrapper {
+    height: 380px;
+    position: relative;
+    margin-top: 100px;
+}
 
-    // Handle clicks on the envelope, open, and reset buttons
-    envelope.click(function() {
-        openEnvelope();
-    });
+#envelope {
+    position: relative;
+    height: 180px;
+    width: 280px;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
+    margin: 0 auto;
+    background-color: #F7B5CA;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
 
-    btn_open.click(function() {
-        openEnvelope();
-    });
+#envelope:hover {
+    cursor: pointer;
+}
 
-    btn_reset.click(function() {
-        closeEnvelope();
-    });
+.front {
+    position: absolute;
+    width: 0;
+    height: 0;
+    z-index: 3;
+}
 
-    function openEnvelope() {
-        envelope.addClass("open").removeClass("close");
-    }
+.flap {
+    border-top: 98px solid #D14D72;
+    border-left: 140px solid transparent;
+    border-right: 140px solid transparent;
+    border-bottom: 82px solid transparent;
+    transform-origin: top;
+    transition: transform 0.4s ease;
+}
 
-    function closeEnvelope() {
-        envelope.addClass("close").removeClass("open");
-    }
-});
+.pocket {
+    border-left: 140px solid #FF8BA0;
+    border-right: 140px solid #FF8BA0;
+    border-bottom: 90px solid #FFA8B5;
+    border-top: 90px solid transparent;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 6px;
+}
+
+.letter {
+    position: relative;
+    background-color: white;
+    width: 90%;
+    height: 95%;
+    top: 5%;
+    border-radius: 10px;
+    box-shadow: 0 2px 26px rgba(0, 0, 0, .12);
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 1;
+}
+
+.words {
+    font-family: 'Satisfy', cursive;
+    font-size: 16px;
+    text-align: center;
+    color: black;
+    position: relative;
+    top: 20%;
+}
+
+.open .flap {
+    transform: rotateX(180deg);
+    transition: transform 0.4s ease-in-out;
+}
+
+.open .letter {
+    transform: translateY(-80px);
+    transition: transform 0.4s ease-in-out;
+}
+
+.close .flap {
+    transform: rotateX(0deg);
+}
+
+.close .letter {
+    transform: translateY(0);
+}
+
+.hearts {
+    position: absolute;
+    top: 90px;
+    left: 0;
+    right: 0;
+    z-index: 2;
+}
+
+.heart {
+    position: absolute;
+    bottom: 0;
+    right: 10%;
+    width: 50px;
+    height: 50px;
+    background-color: red;
+    transform: scale(0.7);
+    animation: glowing 1.5s infinite;
+}
+
+/* Glow Effect */
+@keyframes glowing {
+    0% { box-shadow: 0 0 5px #ff69b4; }
+    50% { box-shadow: 0 0 20px #ff69b4, 0 0 30px #ff69b4; }
+    100% { box-shadow: 0 0 5px #ff69b4; }
+}
+
+.reset button {
+    font-weight: 800;
+    background-color: transparent;
+    border: solid 2px #D14D72;
+    border-radius: 4px;
+    color: #D14D72;
+    padding: 10px 20px;
+    margin: 20px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.reset button:hover {
+    background-color: #D14D72;
+    color: white;
+    animation: bounce 0.5s ease;
+}
+
+/* Button Bounce Effect */
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* Typing Effect for Message */
+.message {
+    font-family: 'Caveat', cursive;
+    font-size: 24px;
+    text-align: center;
+    margin: 50px;
+    display: none;
+}
+
+@keyframes typing {
+    0% { width: 0; }
+    100% { width: 100%; }
+}
+
+@keyframes blink {
+    0%, 100% { border-color: transparent; }
+    50% { border-color: black; }
+}
