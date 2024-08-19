@@ -1,6 +1,6 @@
 body {
     background-color: #FEF2F4;
-    font-family: 'Ubuntu', sans-serif;
+    font-family: 'Josefin Slab', serif;
     margin: 0;
     padding: 0;
 }
@@ -72,7 +72,7 @@ body {
     width: 90%;
     font-size: 13px;
     text-align: center;
-    font-family: "Josefin Slab", serif;
+    font-family: "Caveat", cursive;
     color: black;
 }
 
@@ -262,17 +262,17 @@ body {
 
 .message {
     text-align: center;
-    font-family: "Josefin Slab", serif;
+    font-family: "Satisfy", cursive;
     font-weight: 400;
     margin: 50px;
     font-size: 24px;
     line-height: 1.5;
     color: rgb(20, 20, 20);
-    opacity: 0;
-    animation: typing 4s steps(80, end), blink 0.75s step-end infinite;
-    white-space: nowrap;
     overflow: hidden;
-    border-right: 4px solid black;
+    white-space: nowrap;
+    border-right: 3px solid black;
+    width: 0;
+    animation: typing 4s steps(40, end) forwards, blink 0.75s step-end infinite;
 }
 
 @keyframes typing {
